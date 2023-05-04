@@ -1,12 +1,17 @@
 package org.example;
+import java.util.Scanner;
 
-public class Main {
+
+public class Main extends Thread{
 
     Field field;
     Player player1;
     Player player2;
 
+    static Scanner scanner = new Scanner(System.in);
+
     public Main() {
+        super();
         field = new Field();
         player1 = new Player('X', "Player 1");
         player2 = new Player('O', "Player 2");
@@ -15,6 +20,9 @@ public class Main {
     public static void main(String[] args) {
         Main main = new Main();
         main.startGame();
+
+        main.printPane(0);
+        System.out.println("Started game!");
     }
 
     public void startGame() {
@@ -43,6 +51,40 @@ public class Main {
         System.out.println("For questions, suggestions or bug reports: ");
         System.out.println("Good luck!");
     }
+
+
+    public void run() {
+        //TODO implement the game logic
+
+
+
+    }
+
+
+    public void clearConsole() {
+        System.out.print("\033[H\033[2J");
+    }
+
+    public void printPane(int id){
+
+        Pane currentPane = field.getPane(id);
+
+        System.out.println("Current pane: " + id);
+        System.out.println(currentPane.field[0][0] + " | " + currentPane.field[0][1] + " | " + currentPane.field[0][2]);
+        System.out.println(currentPane.field[1][0] + " | " + currentPane.field[1][1] + " | " + currentPane.field[1][2]);
+        System.out.println(currentPane.field[2][0] + " | " + currentPane.field[2][1] + " | " + currentPane.field[2][2]);
+    }
+
+    public void getInputByPlayer(Player player) {
+        //TODO implement the input method
+
+
+
+    }
+
+
+
+
 
 
 }

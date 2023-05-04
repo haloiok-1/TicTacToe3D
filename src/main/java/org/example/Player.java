@@ -1,9 +1,12 @@
 package org.example;
+import java.util.Scanner;
 
 public class Player {
 
     char symbol;
     String name;
+
+
 
     public Player(char symbol, String name) {
         this.symbol = symbol;
@@ -17,4 +20,10 @@ public class Player {
     public String getName() {
         return name;
     }
+
+
+    public void setName(String Nime){
+
+    }
 }
+

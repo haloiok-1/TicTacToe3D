@@ -1,9 +1,12 @@
 package org.example;
+import java.util.Scanner;
 
 public class Pane {
 
     char[][] field = new char[3][3];
     int id;
+
+    static Scanner scanner = new Scanner(System.in);
 
     public Pane(int id) {
         this.id = id;
@@ -15,5 +18,25 @@ public class Pane {
             }
         }
     }
+
+    public void setSymbolAtPosition(int pane,int x, int y, Player player) {
+        if(pane != id) {
+            System.out.println("This is not the pane you are looking for!");
+            return;
+        }
+
+        else if(field[x][y] != ' ') {
+            System.out.println("This field is already occupied!");
+            return;
+        }
+
+        else {
+
+            System.out.println("Symbol set!");
+
+        }
+    }
+
+
 
 }
