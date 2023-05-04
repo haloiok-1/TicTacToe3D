@@ -22,8 +22,11 @@ public class Player {
     }
 
 
-    public void setName(String Nime){
-
+    public void setName(String name){
+        if(name.length() < 0){this.name = "Player";}
+        else {
+            this.name = name;
+        }
     }
 }
 
