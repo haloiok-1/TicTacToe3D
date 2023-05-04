@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e6d4d7b8-a43d-4d23-9534-fbb64e39206a" name="Changes" comment="some minor things">
+    <list default="true" id="e6d4d7b8-a43d-4d23-9534-fbb64e39206a" name="Changes" comment="added code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Field.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Pane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Pane.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -104,12 +103,20 @@
       <option name="project" value="LOCAL" />
       <updated>1682407215379</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="added code">
+      <created>1683181774993</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1683181774993</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit" />
     <MESSAGE value="some minor things" />
-    <option name="LAST_COMMIT_MESSAGE" value="some minor things" />
+    <MESSAGE value="added code" />
+    <option name="LAST_COMMIT_MESSAGE" value="added code" />
   </component>
 </project>
