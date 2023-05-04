@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main extends Thread{
 
-    Field field;
+    static Field field;
     Player player1;
     Player player2;
 
@@ -19,10 +19,8 @@ public class Main extends Thread{
 
     public static void main(String[] args) {
         Main main = new Main();
-        main.startGame();
-
-        main.printPane(0);
         System.out.println("Started game!");
+        getInputByPlayer(main.player1);
     }
 
     public void startGame() {
@@ -33,8 +31,8 @@ public class Main extends Thread{
         System.out.println("Player 1 starts!");
 
         //describe the field with 3 dimensions
-        System.out.println("The field is divided into 3 panes, each pane is divided into 3 fields");
-        System.out.println("The field looks like this:");
+        System.out.println("The field is divided into 3 panes, each pane is divided into 9 squares.");
+        System.out.println("A pane looks like this:");
         System.out.println("1 | 2 | 3");
         System.out.println("4 | 5 | 6");
         System.out.println("7 | 8 | 9");
@@ -61,7 +59,7 @@ public class Main extends Thread{
     }
 
 
-    public void clearConsole() {
+    public static void clearConsole() {
         System.out.print("\033[H\033[2J");
     }
 
@@ -75,8 +73,42 @@ public class Main extends Thread{
         System.out.println(currentPane.field[2][0] + " | " + currentPane.field[2][1] + " | " + currentPane.field[2][2]);
     }
 
-    public void getInputByPlayer(Player player) {
+    public static void getInputByPlayer(Player player) {
         //TODO implement the input method
+
+
+
+        //TODO user input for pane
+        Pane selectedPane = null;
+        int paneInput = -1;
+
+        while(paneInput < 1 || paneInput > 3) {
+            clearConsole();
+            System.out.println("Which PANE do you want to select: ");
+            paneInput = scanner.nextInt();
+
+            try {
+                selectedPane = field.getPane(paneInput);
+            } catch (IllegalArgumentException e) {
+                System.out.println("Please enter a valid number!");
+            }
+        }
+        scanner.nextLine();
+        //TODO userinput for square
+        String input = null;
+        while(input == null || input.length() == 0 || input.length() > 2) {
+            System.out.println("Please enter the number of the square you want to place your symbol in: ");
+            input = scanner.nextLine();
+        }
+
+        String[] parts = input.split("[^0-9]+");
+        for (String part : parts) {
+            int currentCoordinate = Math.abs(Integer.parseInt(part));
+            System.out.println(currentCoordinate);
+
+        }
+
+
 
 
 
