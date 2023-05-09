@@ -19,16 +19,19 @@ public class Main extends Thread{
 
     public static void main(String[] args) {
         Main main = new Main();
-        System.out.println("Started game!");
+        startGame();
         getInputByPlayer(main.player1);
+        clearConsole();
     }
 
-    public void startGame() {
+    public static void startGame() {
 
         //print welcome message
         System.out.println("Welcome to Tic Tac Toe!");
         System.out.println("Player 1 is X, Player 2 is O");
         System.out.println("Player 1 starts!");
+
+        pressEnterToContinue();
 
         //describe the field with 3 dimensions
         System.out.println("The field is divided into 3 panes, each pane is divided into 9 squares.");
@@ -36,6 +39,8 @@ public class Main extends Thread{
         System.out.println("1 | 2 | 3");
         System.out.println("4 | 5 | 6");
         System.out.println("7 | 8 | 9");
+
+        pressEnterToContinue();
 
         //describe the input method
         System.out.println("At first you will be asked to enter the number of the pane you want to place your symbol in.");
@@ -45,25 +50,32 @@ public class Main extends Thread{
         System.out.println("For example, to place your symbol on the top right field, enter 3");
         System.out.println("To place your symbol on the middle left field, enter 4");
 
+
         //
+        System.out.println("");
         System.out.println("For questions, suggestions or bug reports: ");
         System.out.println("Good luck!");
+
+        pressEnterToContinue();
     }
 
 
     public void run() {
         //TODO implement the game logic
 
-
-
     }
 
 
     public static void clearConsole() {
-        System.out.print("\033[H\033[2J");
-    }
+        try {
+            System.out.print("\033[H\033[2J");
+            System.out.flush();
+        } catch (Exception e) {
+            // Fehlerbehandlung
+        }
 
-    public void printPane(int id){
+    }
+    public static void printPane(int id){
 
         Pane currentPane = field.getPane(id);
 
@@ -89,29 +101,73 @@ public class Main extends Thread{
 
             try {
                 selectedPane = field.getPane(paneInput);
+                printPane(paneInput);
+
             } catch (IllegalArgumentException e) {
                 System.out.println("Please enter a valid number!");
             }
         }
         scanner.nextLine();
-        //TODO userinput for square
+
+
+
+        //TODO user input for square
         String input = null;
-        while(input == null || input.length() == 0 || input.length() > 2) {
+        while(input == null || input.length() == 0 || input.length() > 3 || checkCoordinates(input) == false) {
             System.out.println("Please enter the number of the square you want to place your symbol in: ");
             input = scanner.nextLine();
         }
 
-        String[] parts = input.split("[^0-9]+");
+       input = input.replaceAll("[^0-9]+", " ");
+
+
+        //
+        String[] parts = input.split(" ");
+
         for (String part : parts) {
             int currentCoordinate = Math.abs(Integer.parseInt(part));
             System.out.println(currentCoordinate);
-
         }
 
 
 
 
 
+    }
+
+    private static void pressEnterToContinue()
+    {
+        System.out.println("");
+        System.out.println("Press Enter key to continue...");
+        try
+        {
+            System.in.read();
+        }
+        catch(Exception e)
+        {}
+    }
+
+    public static boolean checkCoordinates(String input) {
+
+        input = input.replaceAll("[^0-9]+", " ");
+        String[] parts = input.split(" ");
+
+        //convert string to int
+        int[] coordinates = new int[2];
+        coordinates[0] = Integer.parseInt(parts[0]);
+        coordinates[1] = Integer.parseInt(parts[1]);
+
+
+        //check if coordinates are valid
+        if(coordinates.length != 2) {
+            return false;
+        }
+        //check if coordinates are in range
+        if(coordinates[0] < 0 || coordinates[0] > 2 || coordinates[1] < 0 || coordinates[1] > 2){
+            return false;
+        }
+
+        return true;
     }
 
 
