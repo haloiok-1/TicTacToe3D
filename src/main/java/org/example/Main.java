@@ -22,6 +22,8 @@ public class Main extends Thread{
         startGame();
         getInputByPlayer(main.player1);
         clearConsole();
+
+
     }
 
     public static void startGame() {
@@ -119,20 +121,11 @@ public class Main extends Thread{
         }
 
        input = input.replaceAll("[^0-9]+", " ");
+       String[] parts = input.split(" ");
 
-
-        //
-        String[] parts = input.split(" ");
-
-        for (String part : parts) {
-            int currentCoordinate = Math.abs(Integer.parseInt(part));
-            System.out.println(currentCoordinate);
-        }
-
-
-
-
-
+       int[] coordinates = new int[2];
+       coordinates[0] = Integer.parseInt(parts[0]);
+       coordinates[1] = Integer.parseInt(parts[1]);
     }
 
     private static void pressEnterToContinue()
@@ -168,6 +161,11 @@ public class Main extends Thread{
         }
 
         return true;
+    }
+
+    public static void fillField(int pane, int x, int y, Player currentPlayer) {
+        Pane currentPane = field.getPane(pane);
+        currentPane.field[x][y] = Player.symbol;
     }
 
 

@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Player {
 
-    char symbol;
+    static char symbol;
     String name;
 
 
