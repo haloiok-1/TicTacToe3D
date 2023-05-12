@@ -1,7 +1,4 @@
 package org.example;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class Main extends Thread{
@@ -24,8 +21,10 @@ public class Main extends Thread{
     public static void main(String[] args) {
         Main main = new Main();
 
-
-        askYesOrNo();
+        getSquareInput();
+        field.getPane(0).printPane();
+        field.getPane(1).printPane();
+        field.getPane(2).printPane();
 
     }
 
@@ -69,31 +68,24 @@ public class Main extends Thread{
 
     }
 
-    public static void printPane(int id){
-
-        Pane currentPane = field.getPane(id);
-
-        System.out.println("    |  1  |  2  |  3  |");
-
-        for (int i = 0; i < 3; i++) {
-            System.out.println("  --------------------");
-            System.out.println("  " + (i + 1) + " |  " + currentPane.field[i][0] + "  |  "
-                    + currentPane.field[i][1] + "  |  " + currentPane.field[i][2] + "  |");
-            System.out.println("  --------------------");
-        }
-    }
-
     public static int getPaneInput() {
         //set selectedPane to null and paneInput to -1 to enter the while loop
-        int paneInput = -1;
+        int paneInput = 0;
 
         //while loop to check if the user input is valid
-        while (paneInput < 1 || paneInput > 3) {
+        while (paneInput < 1 || paneInput > 3 || askYesOrNo()) {
+            clearConsole();
             System.out.println("Which PANE do you want to select: ");
 
             //get user input and check if it is an integer
-            paneInput = scanner.nextInt();
-
+            try {
+                paneInput = scanner.nextInt();
+            } catch (Exception e) {
+                System.out.println("Please enter a valid number between 1 and 3!");
+                pressEnterToContinue(false);
+                scanner.next();
+                continue;
+            }
             //try to get the pane with the given id, if the id is not valid, an IllegalArgumentException is raised
             try {
                 field.getPane(paneInput);
@@ -103,6 +95,7 @@ public class Main extends Thread{
         }
 
         //print the selected pane
+        clearConsole();
         System.out.println("You selected the pane with the id: " + paneInput);
         pressEnterToContinue(true);
         return paneInput;
@@ -112,7 +105,8 @@ public class Main extends Thread{
         String input = null;
         //get rid of newline character
 
-        while (input == null || input.length() == 0 || input.length() > 3 || !checkCoordinates(input)) {
+        while (input == null || input.length() < 2 || input.length() > 3 || !checkCoordinates(input) || askYesOrNo()) {
+            clearConsole();
             System.out.println("Please enter the number of the square you want to place your symbol in:");
             input = scanner.next();
         }
@@ -126,6 +120,9 @@ public class Main extends Thread{
             //parse the string to an int
             coordinates[i] = Integer.parseInt(parts[i]);
         }
+
+        //feedback for the user
+        System.out.println("You selected the square with the coordinates: " + coordinates[0] + ", " + coordinates[1]);
 
         //return the selected square
         return coordinates;
@@ -151,36 +148,41 @@ public class Main extends Thread{
             System.out.println("Do you want to confirm:");
             input = scanner.next();
         }
-
-        //give feedback to the user
-        System.out.println("You entered: " + input);
-
-
         //return true if input is yes or y
-        return input.equalsIgnoreCase("yes") || input.equalsIgnoreCase("y");
-    }
-
-    public static boolean checkCoordinates(String input) {
-        //parses the input string to an int array by splitting the string at every non-numeric character
-        int[] coordinates = parseStringToIntArray(input);
-
-
-        //check if coordinates are in range and give feedback witch coordinates are not in range
-        if (coordinates[0] < 1 || coordinates[0] > 3) {
-            System.out.println("The first number must be between 1 and 3!");
-        }
-
-        if (coordinates[1] < 1 || coordinates[1] > 3) {
-            System.out.println("The second number must be between 1 and 3!");
-        }
-        //return true if coordinates are in range
-        return coordinates[0] > 0 && coordinates[0] < 3 && coordinates[1] > 0 && coordinates[1] < 3;
+        return !input.equalsIgnoreCase("yes") && !input.equalsIgnoreCase("y");
     }
     public static boolean checkYesOrNo(String input) {
         //return true if input is yes or y
         return input.equalsIgnoreCase("yes") || input.equalsIgnoreCase("y")
                 || input.equalsIgnoreCase("no") || input.equalsIgnoreCase("n");
     }
+
+    public static boolean checkCoordinates(String input) {
+        //parses the input string to an int array by splitting the string at every non-numeric character
+        int[] coordinates = parseStringToIntArray(input);
+
+        if (coordinates.length != 2) {
+            System.out.println("Please enter two numbers!");
+
+            pressEnterToContinue(false);
+            return false;
+        }
+
+
+        //check if coordinates are in range and give feedback witch coordinates are not in range
+        if (coordinates[0] < 1 || coordinates[0] > 3) {
+            System.out.println("The first number must be between 1 and 3!");
+            pressEnterToContinue(false);
+        }
+
+        if (coordinates[1] < 1 || coordinates[1] > 3) {
+            System.out.println("The second number must be between 1 and 3!");
+            pressEnterToContinue(false);
+        }
+        //return true if coordinates are in range
+        return coordinates[0] > 0 && coordinates[0] < 3 && coordinates[1] > 0 && coordinates[1] < 3;
+    }
+
 
 
     public static int[] parseStringToIntArray(String text) {
