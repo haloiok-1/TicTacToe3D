@@ -31,7 +31,7 @@ public class Pane {
         }
 
         else {
-
+            field[x][y] = Player.symbol;
             System.out.println("Symbol set!");
 
         }
