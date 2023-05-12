@@ -170,7 +170,21 @@
       <option name="project" value="LOCAL" />
       <updated>1683923582055</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="added user confirmation to all important functions&#10;deleted printPane">
+      <created>1683925167876</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1683925167876</updated>
+    </task>
+    <task id="LOCAL-00015" summary="add function for showing the pane with and without a preview">
+      <created>1683926043027</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1683926043027</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -198,7 +212,9 @@
     <MESSAGE value="fixed the squareInput" />
     <MESSAGE value="removed method out of the Main class because of duplication&#10;added some minor functionality" />
     <MESSAGE value="added simple function to ask the User if he wants to confirm something" />
-    <option name="LAST_COMMIT_MESSAGE" value="added simple function to ask the User if he wants to confirm something" />
+    <MESSAGE value="added user confirmation to all important functions&#10;deleted printPane" />
+    <MESSAGE value="add function for showing the pane with and without a preview" />
+    <option name="LAST_COMMIT_MESSAGE" value="add function for showing the pane with and without a preview" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

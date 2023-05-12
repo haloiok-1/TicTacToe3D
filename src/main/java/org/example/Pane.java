@@ -20,26 +20,23 @@ public class Pane {
     }
 
     public void setSymbolAtPosition(int pane,int x, int y, Player player) {
-        if(pane != id) {
-            System.out.println("This is not the pane you are looking for!");
-            return;
-        }
-
-        else if(field[x][y] != ' ') {
+        if(field[x][y] != ' ') {
             System.out.println("This field is already occupied!");
             return;
         }
 
         else {
             field[x][y] = Player.symbol;
+            this.printPane();
             System.out.println("Symbol set!");
 
         }
     }
 
     public void printPane(){
-
-        System.out.println("Pane " + id + ":");
+        //print the pane
+        System.out.print("Pane ");
+        System.out.print(id+1 + ":");
         System.out.println();
         System.out.println("    |  1  |  2  |  3  |");
         for (int i = 0; i < 3; i++) {
