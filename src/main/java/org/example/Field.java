@@ -15,16 +15,12 @@ public class Field {
     }
 
     public Pane getPane(int id) throws IllegalArgumentException {
-        switch (id) {
-            case 1:
-                return firstPane;
-            case 2:
-                return secondPane;
-            case 3:
-                return thirdPane;
-            default:
-                throw new IllegalArgumentException("Invalid Pane ID!");
-        }
+        return switch (id-1) {
+            case 0 -> firstPane;
+            case 1 -> secondPane;
+            case 2 -> thirdPane;
+            default -> throw new IllegalArgumentException("Invalid Pane ID!");
+        };
     }
 
     public Pane[] getPanes(){

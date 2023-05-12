@@ -22,7 +22,8 @@ public class Main extends Thread{
     public static void main(String[] args) {
         Main main = new Main();
 
-        getPaneInput();
+        currentPane = field.getPane(1);
+        getSquareInput();
 
     }
 
@@ -106,6 +107,12 @@ public class Main extends Thread{
             clearConsole();
             System.out.println("Please enter the number of the square you want to place your symbol in:");
             input = scanner.next();
+
+            try{
+                currentPane.printPaneWithPlaceHolder(parseStringToIntArray(input)[0], parseStringToIntArray(input)[1]);
+
+            }
+            catch(Exception ignored){}
         }
 
         //parses the input string to an int array by splitting the string at every non-numeric character
@@ -159,7 +166,7 @@ public class Main extends Thread{
         int[] coordinates = parseStringToIntArray(input);
 
         if (coordinates.length != 2) {
-            System.out.println("Please enter two numbers!");
+            System.out.println("Please enter only two numbers!");
 
             pressEnterToContinue(false);
             return false;
@@ -167,17 +174,17 @@ public class Main extends Thread{
 
 
         //check if coordinates are in range and give feedback witch coordinates are not in range
-        if (coordinates[0] < 1 || coordinates[0] > 3) {
+        if (coordinates[0] < 1 || coordinates[0] > 4) {
             System.out.println("The first number must be between 1 and 3!");
             pressEnterToContinue(false);
         }
 
-        if (coordinates[1] < 1 || coordinates[1] > 3) {
+        if (coordinates[1] < 1 || coordinates[1] > 4) {
             System.out.println("The second number must be between 1 and 3!");
             pressEnterToContinue(false);
         }
         //return true if coordinates are in range
-        return coordinates[0] > 0 && coordinates[0] < 3 && coordinates[1] > 0 && coordinates[1] < 3;
+        return coordinates[0] > 0 && coordinates[0] <= 3 && coordinates[1] > 0 && coordinates[1] <= 3;
     }
 
 

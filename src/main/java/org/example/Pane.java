@@ -6,8 +6,6 @@ public class Pane {
     static char[][] field = new char[3][3];
     int id;
 
-    static Scanner scanner = new Scanner(System.in);
-
     public Pane(int id) {
         this.id = id;
 
@@ -35,8 +33,7 @@ public class Pane {
 
     public void printPane(){
         //print the pane
-        System.out.print("Pane ");
-        System.out.print(id+1 + ":");
+        System.out.println("Pane " + id+1 + ":");
         System.out.println();
         System.out.println("    |  1  |  2  |  3  |");
         for (int i = 0; i < 3; i++) {
@@ -46,20 +43,27 @@ public class Pane {
         }
     }
 
-    public void printPaneWithPlaceHolder(int x, int y){
+    public void printPaneWithPlaceHolder(int x, int y) {
         //print the pane but with an O at the x, y position
-        char[][] fieldCopy = field.clone();
-        fieldCopy[y-1][x-1] = 'O';
+        char[][] fieldCopy = new char[field.length][field[0].length];
 
-        System.out.println("Pane " + id + ":");
-        System.out.println();
-        System.out.println("    |  1  |  2  |  3  |");
         for (int i = 0; i < 3; i++) {
-            System.out.println("   ---------------------");
-            System.out.println("  " + (i + 1) + " |  " + fieldCopy[i][0] + "  |  " + fieldCopy[i][1] + "  |  " + fieldCopy[i][2] + "  |");
-            System.out.println("   ---------------------");
+            for (int j = 0; j< 3; j++) fieldCopy[i][j] = field[i][j];
+        }
+            if(fieldCopy[y - 1][x - 1] == ' ') fieldCopy[y - 1][x - 1] = 'O';
+
+
+            System.out.println("Pane " + (id+1) + ":");
+            System.out.println();
+            System.out.println("    |  1  |  2  |  3  |");
+            for (int i = 0; i < 3; i++) {
+                System.out.println("   ---------------------");
+                System.out.println("  " + (i + 1) + " |  " + fieldCopy[i][0] + "  |  " + fieldCopy[i][1] + "  |  " + fieldCopy[i][2] + "  |");
+                System.out.println("   ---------------------");
+            }
+
         }
 
-    }
 
 }
+
