@@ -1,4 +1,7 @@
 package org.example;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class Main extends Thread{
@@ -6,7 +9,6 @@ public class Main extends Thread{
     Player player1;
     Player player2;
 
-    static int[] fieldCoordinates = {-1, -1, -1};
     Player currentPlayer = null;
 
     static Scanner scanner = new Scanner(System.in);
@@ -22,14 +24,9 @@ public class Main extends Thread{
     public static void main(String[] args) {
         Main main = new Main();
 
-        fieldCoordinates[0] = getPaneInput();
 
-        int[] squareCoordinates = getSquareInput();
-        fieldCoordinates[1] = squareCoordinates[0];
-        fieldCoordinates[2] = squareCoordinates[1];
+        askYesOrNo();
 
-        //print field coordinates
-        System.out.println("You selected the field with the coordinates: " + fieldCoordinates[0] + " " + fieldCoordinates[1] + " " + fieldCoordinates[2]);
     }
 
     public static void startGame() {
@@ -134,7 +131,34 @@ public class Main extends Thread{
         return coordinates;
     }
 
+    public static int[] getCoordinates(){
+        int[] coordinates = new int[3];
 
+        //get the pane input and the square input for the coordinates array
+        coordinates[0] = getPaneInput();
+        int[] squareInputArray = getSquareInput();
+        coordinates[1] = squareInputArray[0];
+        coordinates[2] = squareInputArray[1];
+
+        return coordinates;
+    }
+
+    public static boolean askYesOrNo() {
+        String input = null;
+
+        //check if input is yes or no or the short form of yes or no
+        while(input == null || input.length() < 1 || input.length() > 3 || !checkYesOrNo(input)) {
+            System.out.println("Do you want to confirm:");
+            input = scanner.next();
+        }
+
+        //give feedback to the user
+        System.out.println("You entered: " + input);
+
+
+        //return true if input is yes or y
+        return input.equalsIgnoreCase("yes") || input.equalsIgnoreCase("y");
+    }
 
     public static boolean checkCoordinates(String input) {
         //parses the input string to an int array by splitting the string at every non-numeric character
@@ -152,6 +176,11 @@ public class Main extends Thread{
         //return true if coordinates are in range
         return coordinates[0] > 0 && coordinates[0] < 3 && coordinates[1] > 0 && coordinates[1] < 3;
     }
+    public static boolean checkYesOrNo(String input) {
+        //return true if input is yes or y
+        return input.equalsIgnoreCase("yes") || input.equalsIgnoreCase("y")
+                || input.equalsIgnoreCase("no") || input.equalsIgnoreCase("n");
+    }
 
 
     public static int[] parseStringToIntArray(String text) {
@@ -167,6 +196,9 @@ public class Main extends Thread{
         //return the selected square
         return coordinates;
     }
+
+
+
 
 
     //simple methods to handle the console
@@ -194,12 +226,5 @@ public class Main extends Thread{
             clearConsole();
         }
     }
-
-
-
-
-
-
-
 
 }
