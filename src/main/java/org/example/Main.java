@@ -7,6 +7,7 @@ public class Main extends Thread{
     Player player2;
 
     Player currentPlayer = null;
+    static Pane currentPane = null;
 
     static Scanner scanner = new Scanner(System.in);
 
@@ -21,10 +22,7 @@ public class Main extends Thread{
     public static void main(String[] args) {
         Main main = new Main();
 
-        getSquareInput();
-        field.getPane(0).printPane();
-        field.getPane(1).printPane();
-        field.getPane(2).printPane();
+        getPaneInput();
 
     }
 
@@ -80,17 +78,15 @@ public class Main extends Thread{
             //get user input and check if it is an integer
             try {
                 paneInput = scanner.nextInt();
+                field.getPane(paneInput);
+
+                clearConsole();
+                field.getPane(paneInput).printPane();
             } catch (Exception e) {
                 System.out.println("Please enter a valid number between 1 and 3!");
                 pressEnterToContinue(false);
                 scanner.next();
                 continue;
-            }
-            //try to get the pane with the given id, if the id is not valid, an IllegalArgumentException is raised
-            try {
-                field.getPane(paneInput);
-            } catch (IllegalArgumentException e) {
-                System.out.println("Please enter a valid number between 1 and 3!");
             }
         }
 
@@ -98,6 +94,7 @@ public class Main extends Thread{
         clearConsole();
         System.out.println("You selected the pane with the id: " + paneInput);
         pressEnterToContinue(true);
+        currentPane = field.getPane(paneInput);
         return paneInput;
     }
 
