@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Pane {
 
-    char[][] field = new char[3][3];
+    static char[][] field = new char[3][3];
     int id;
 
     static Scanner scanner = new Scanner(System.in);
@@ -37,6 +37,32 @@ public class Pane {
         }
     }
 
+    public void printPane(){
 
+        System.out.println("Pane " + id + ":");
+        System.out.println();
+        System.out.println("    |  1  |  2  |  3  |");
+        for (int i = 0; i < 3; i++) {
+            System.out.println("   ---------------------");
+            System.out.println("  " + (i + 1) + " |  " + field[i][0] + "  |  " + field[i][1] + "  |  " + field[i][2] + "  |");
+            System.out.println("   ---------------------");
+        }
+    }
+
+    public void printPaneWithPlaceHolder(int x, int y){
+        //print the pane but with an O at the x, y position
+        char[][] fieldCopy = field.clone();
+        fieldCopy[y-1][x-1] = 'O';
+
+        System.out.println("Pane " + id + ":");
+        System.out.println();
+        System.out.println("    |  1  |  2  |  3  |");
+        for (int i = 0; i < 3; i++) {
+            System.out.println("   ---------------------");
+            System.out.println("  " + (i + 1) + " |  " + fieldCopy[i][0] + "  |  " + fieldCopy[i][1] + "  |  " + fieldCopy[i][2] + "  |");
+            System.out.println("   ---------------------");
+        }
+
+    }
 
 }
