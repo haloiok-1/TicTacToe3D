@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6d4d7b8-a43d-4d23-9534-fbb64e39206a" name="Changes" comment="added maven run configuration">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Pane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Pane.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +24,19 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="07e5c67a-2a7e-48d9-a50e-2a5e7b20a3d2" />
+        <option name="url" value="https://github.com/haloiok-1/TicTacToe3D.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -36,19 +51,21 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "TODO_SCOPE": "All Places",
+    "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/FischerL/IdeaProjects/TicTacToe3D/target/TicTacToe3D-1.0-SNAPSHOT-jar-with-dependencies.jar",
     "settings.editor.selected.configurable": "editor.preferences.fonts.default"
   }
 }]]></component>
   <component name="RunManager" selected="Maven.TicTacToe3D [compile,package]">
-    <configuration name="Unnamed" type="JarApplication" nameIsGenerated="true">
+    <configuration name="Run" type="JarApplication">
       <option name="JAR_PATH" value="$PROJECT_DIR$/target/TicTacToe3D-1.0-SNAPSHOT-jar-with-dependencies.jar" />
-      <option name="WORKING_DIRECTORY" value="C:\Users\FischerL\IdeaProjects\TicTacToe3D" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\fisch\Documents\Code\Java\TicTacToe3D" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="JAR Application.Unnamed" />
+      <item itemvalue="JAR Application.Run" />
       <item itemvalue="Maven.TicTacToe3D [compile,package]" />
     </list>
   </component>
@@ -124,8 +141,26 @@
       <option name="project" value="LOCAL" />
       <updated>1683616509897</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="added some more code,&#10;paneInput works&#10;squareInput doesn't -&gt; still working on it">
+      <created>1683663440077</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1683663440077</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit" />
@@ -137,14 +172,28 @@
     <MESSAGE value="update workspace.xml" />
     <MESSAGE value="added input check" />
     <MESSAGE value="added maven run configuration" />
-    <option name="LAST_COMMIT_MESSAGE" value="added maven run configuration" />
+    <MESSAGE value="added some more code,&#10;paneInput works&#10;squareInput doesn't -&gt; still working on it" />
+    <option name="LAST_COMMIT_MESSAGE" value="added some more code,&#10;paneInput works&#10;squareInput doesn't -&gt; still working on it" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.util.InputMismatchException" package="java.util" />
+          <option name="timeStamp" value="8" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="JarApplication">
         <watch expression="input" />
         <watch expression="paneInput" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/TicTacToe3D$Main.ic" NAME="Main Coverage Results" MODIFIED="1683661556373" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>org.example.*</FILTER>
+    </SUITE>
   </component>
 </project>

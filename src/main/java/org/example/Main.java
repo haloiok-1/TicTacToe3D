@@ -1,9 +1,7 @@
 package org.example;
 import java.util.Scanner;
 
-
 public class Main extends Thread{
-
     static Field field;
     Player player1;
     Player player2;
@@ -18,13 +16,20 @@ public class Main extends Thread{
         field = new Field();
         player1 = new Player('X', "Player 1");
         player2 = new Player('O', "Player 2");
+        scanner.useDelimiter("[\r\n]+");
     }
 
     public static void main(String[] args) {
         Main main = new Main();
+
         fieldCoordinates[0] = getPaneInput();
-        fieldCoordinates[1] = getSquareInput()[0];
-        fieldCoordinates[2] = getSquareInput()[1];
+
+        int[] squareCoordinates = getSquareInput();
+        fieldCoordinates[1] = squareCoordinates[0];
+        fieldCoordinates[2] = squareCoordinates[1];
+
+        //print field coordinates
+        System.out.println("You selected the field with the coordinates: " + fieldCoordinates[0] + " " + fieldCoordinates[1] + " " + fieldCoordinates[2]);
     }
 
     public static void startGame() {
@@ -61,14 +66,11 @@ public class Main extends Thread{
         pressEnterToContinue(true);
     }
 
-
     public void run() {
         //TODO implement the game logic
         //nothing to do here yet
 
     }
-
-
 
     public static void printPane(int id){
 
@@ -86,12 +88,10 @@ public class Main extends Thread{
 
     public static int getPaneInput() {
         //set selectedPane to null and paneInput to -1 to enter the while loop
-        Pane selectedPane = null;
         int paneInput = -1;
 
         //while loop to check if the user input is valid
         while (paneInput < 1 || paneInput > 3) {
-            clearConsole();
             System.out.println("Which PANE do you want to select: ");
 
             //get user input and check if it is an integer
@@ -99,24 +99,25 @@ public class Main extends Thread{
 
             //try to get the pane with the given id, if the id is not valid, an IllegalArgumentException is raised
             try {
-                selectedPane = field.getPane(paneInput);
+                field.getPane(paneInput);
             } catch (IllegalArgumentException e) {
                 System.out.println("Please enter a valid number between 1 and 3!");
             }
         }
 
-        //return the selected pane
+        //print the selected pane
+        System.out.println("You selected the pane with the id: " + paneInput);
+        pressEnterToContinue(true);
         return paneInput;
     }
-    public static int[] getSquareInput() {
-        //set selectedSquare to null and squareInput to -1 to enter the while loop
-        String input = null;
 
-        //while loop to check if the user input is valid
-        while(input == null || input.length() == 0 || input.length() > 3 || !checkCoordinates(input)) {
-            System.out.println("Please enter the number of the square you want to place your symbol in: ");
-            //get user input as string with all type of separators
-            input = scanner.nextLine();
+    public static int[] getSquareInput() {
+        String input = null;
+        //get rid of newline character
+
+        while (input == null || input.length() == 0 || input.length() > 3 || !checkCoordinates(input)) {
+            System.out.println("Please enter the number of the square you want to place your symbol in:");
+            input = scanner.next();
         }
 
         //parses the input string to an int array by splitting the string at every non-numeric character
@@ -137,18 +138,14 @@ public class Main extends Thread{
 
     public static boolean checkCoordinates(String input) {
         //parses the input string to an int array by splitting the string at every non-numeric character
-        String[] parts = input.replaceAll("\\D+", " ").trim().split(" ");
-
-        int[] coordinates = new int[parts.length];
-        for (int i = 0; i < parts.length; i++) {
-            coordinates[i] = Integer.parseInt(parts[i]);
-        }
+        int[] coordinates = parseStringToIntArray(input);
 
 
         //check if coordinates are in range and give feedback witch coordinates are not in range
         if (coordinates[0] < 1 || coordinates[0] > 3) {
             System.out.println("The first number must be between 1 and 3!");
         }
+
         if (coordinates[1] < 1 || coordinates[1] > 3) {
             System.out.println("The second number must be between 1 and 3!");
         }
@@ -156,9 +153,19 @@ public class Main extends Thread{
         return coordinates[0] > 0 && coordinates[0] < 3 && coordinates[1] > 0 && coordinates[1] < 3;
     }
 
-    public static void fillField(int pane, int x, int y, Player currentPlayer) {
-        Pane currentPane = field.getPane(pane);
-        currentPane.field[x][y] = Player.symbol;
+
+    public static int[] parseStringToIntArray(String text) {
+        //convert the string array to an int array
+        String[] parts = text.replaceAll("\\D+", " ").trim().split(" ");
+
+        int[] coordinates = new int[parts.length];
+        for (int i = 0; i < parts.length; i++) {
+            //parse the string to an int
+            coordinates[i] = Integer.parseInt(parts[i]);
+        }
+
+        //return the selected square
+        return coordinates;
     }
 
 
