@@ -6,8 +6,10 @@ public class Main extends Thread {
     static Player player1;
     static Player player2;
 
-    Player currentPlayer = null;
+    static Player currentPlayer = null;
     static Pane currentPane = null;
+
+    static int[] currentCoordinates = new int[3];
 
     static Scanner scanner = new Scanner(System.in);
 
@@ -21,11 +23,24 @@ public class Main extends Thread {
 
     public static void main(String[] args) {
         Main main = new Main();
+        int counter = 10;
 
-        currentPane = field.getPane(1);
-        int[] currentInput = getSquareInput();
-        currentPane.setSymbolAtPosition(currentInput[0], currentInput[1], player1);
-        field.printField();
+        while (counter > 0) {
+            System.out.println("next round");
+            currentPlayer = player1;
+
+            currentCoordinates = getCompleteCoordinates();
+            currentPane = field.getPane(currentCoordinates[0]);
+            currentPane.setSymbolAtPosition(currentCoordinates[1], currentCoordinates[2], currentPlayer);
+
+            currentPlayer = player2;
+
+            currentCoordinates = getCompleteCoordinates();
+            currentPane = field.getPane(currentCoordinates[0]);
+            currentPane.setSymbolAtPosition(currentCoordinates[1], currentCoordinates[2], currentPlayer);
+
+            counter--;
+        }
 
 
     }

@@ -18,11 +18,11 @@ public class Pane {
     }
 
     public void setSymbolAtPosition(int x, int y, Player player) {
-        if (this.pane[x - 1][y - 1] != ' ') {
+        if (pane[x - 1][y - 1] != ' ') {
             System.out.println("This field is already occupied!");
             return;
         } else {
-            this.pane[x - 1][y - 1] = player.symbol;
+            pane[x - 1][y - 1] = player.symbol;
             this.printPane();
             System.out.println("Symbol set!");
 
