@@ -1,10 +1,10 @@
 package org.example;
 import java.util.Scanner;
 
-public class Main extends Thread{
+public class Main extends Thread {
     static Field field;
-    Player player1;
-    Player player2;
+    static Player player1;
+    static Player player2;
 
     Player currentPlayer = null;
     static Pane currentPane = null;
@@ -23,7 +23,10 @@ public class Main extends Thread{
         Main main = new Main();
 
         currentPane = field.getPane(1);
-        getSquareInput();
+        int[] currentInput = getSquareInput();
+        currentPane.setSymbolAtPosition(currentInput[0], currentInput[1], player1);
+        field.printField();
+
 
     }
 
@@ -132,7 +135,7 @@ public class Main extends Thread{
         return coordinates;
     }
 
-    public static int[] getCoordinates(){
+    public static int[] getCompleteCoordinates() {
         int[] coordinates = new int[3];
 
         //get the pane input and the square input for the coordinates array
@@ -187,8 +190,6 @@ public class Main extends Thread{
         return coordinates[0] > 0 && coordinates[0] <= 3 && coordinates[1] > 0 && coordinates[1] <= 3;
     }
 
-
-
     public static int[] parseStringToIntArray(String text) {
         //convert the string array to an int array
         String[] parts = text.replaceAll("\\D+", " ").trim().split(" ");
@@ -202,9 +203,6 @@ public class Main extends Thread{
         //return the selected square
         return coordinates;
     }
-
-
-
 
 
     //simple methods to handle the console
