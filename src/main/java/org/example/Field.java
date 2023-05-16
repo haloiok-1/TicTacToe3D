@@ -23,9 +23,22 @@ public class Field {
         };
     }
 
-    public Pane[] getPanes(){
+    public Pane[] getPanes() {
         return panes;
     }
 
 
+    public void printField() {
+        Main.clearConsole();
+
+        System.out.println("Field:");
+
+        firstPane.printPane();
+        System.out.println();
+        secondPane.printPane();
+        System.out.println();
+        thirdPane.printPane();
+
+
+    }
 }
