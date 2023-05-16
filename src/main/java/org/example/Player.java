@@ -1,9 +1,8 @@
 package org.example;
-import java.util.Scanner;
 
 public class Player {
 
-    static char symbol;
+    char symbol;
     String name;
 
 
