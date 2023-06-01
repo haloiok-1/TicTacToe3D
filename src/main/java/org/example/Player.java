@@ -2,7 +2,7 @@ package org.example;
 
 public class Player {
 
-    char symbol;
+    public char symbol;
     String name;
 
 

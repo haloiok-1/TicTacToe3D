@@ -59,8 +59,40 @@ public class Pane {
             System.out.println("   ---------------------");
         }
 
+    }
+
+    //check for win in Tic Tac Toe field
+    public Player checkForWin() {
+        //check for win in rows
+        for (int i = 0; i < 3; i++) {
+            if (pane[i][0] == pane[i][1] && pane[i][1] == pane[i][2] && pane[i][0] != ' ') {
+                if (pane[i][0] == Main.player1.symbol) return Main.player1;
+                else return Main.player2;
+            }
+
+            //check for wins in columns
+            for (int j = 0; j < 3; j++) {
+                if (pane[0][j] == pane[1][j] && pane[1][j] == pane[2][j] && pane[0][j] != ' ') {
+                    if (pane[0][j] == Main.player1.symbol) return Main.player1;
+                    else return Main.player2;
+                }
+            }
+
+            // check for wins in diagonal
+            if (pane[0][0] == pane[1][1] && pane[1][1] == pane[2][2] && pane[0][0] != ' ') {
+                if (pane[0][0] == Main.player1.symbol) return Main.player1;
+                else return Main.player2;
+
+                if (pane[0][2] == pane[1][1] && pane[1][1] == pane[2][0] && pane[0][2] != ' ') {
+                    if (pane[0][2] == Main.player1.symbol) return Main.player1;
+                    else return Main.player2;
+                }
+
+
+            }
+
+
         }
-
-
-}
+        return null;
+    }
 
