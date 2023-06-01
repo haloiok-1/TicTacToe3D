@@ -25,6 +25,8 @@ public class Main extends Thread {
         Main main = new Main();
         int counter = 10;
 
+        startGame();
+
         while (counter > 0) {
             System.out.println("next round");
             currentPlayer = player1;
@@ -46,6 +48,7 @@ public class Main extends Thread {
     }
 
     public static void startGame() {
+        clearConsole();
 
         //print welcome message
         System.out.println("Welcome to Tic Tac Toe!");
@@ -90,8 +93,9 @@ public class Main extends Thread {
         int paneInput = 0;
 
         //while loop to check if the user input is valid
-        while (paneInput < 1 || paneInput > 3 || askYesOrNo()) {
+        while (paneInput < 1 || paneInput > 3) {
             clearConsole();
+            field.printField();
             System.out.println("Which PANE do you want to select: ");
 
             //get user input and check if it is an integer
@@ -111,8 +115,6 @@ public class Main extends Thread {
 
         //print the selected pane
         clearConsole();
-        System.out.println("You selected the pane with the id: " + paneInput);
-        pressEnterToContinue(true);
         currentPane = field.getPane(paneInput);
         return paneInput;
     }
@@ -123,10 +125,12 @@ public class Main extends Thread {
 
         while (input == null || input.length() < 2 || input.length() > 3 || !checkCoordinates(input) || askYesOrNo()) {
             clearConsole();
+            currentPane.printPane();
             System.out.println("Please enter the number of the square you want to place your symbol in:");
             input = scanner.next();
 
             try{
+                clearConsole();
                 currentPane.printPaneWithPlaceHolder(parseStringToIntArray(input)[0], parseStringToIntArray(input)[1]);
 
             }
@@ -190,7 +194,6 @@ public class Main extends Thread {
             return false;
         }
 
-
         //check if coordinates are in range and give feedback witch coordinates are not in range
         if (coordinates[0] < 1 || coordinates[0] > 4) {
             System.out.println("The first number must be between 1 and 3!");
@@ -201,6 +204,12 @@ public class Main extends Thread {
             System.out.println("The second number must be between 1 and 3!");
             pressEnterToContinue(false);
         }
+        //check if the square is already taken by an character
+        if (currentPane.getSymbolAtPosition(coordinates[0], coordinates[1]) != ' ') {
+            System.out.println("This square is already taken!");
+            pressEnterToContinue(false);
+        }
+
         //return true if coordinates are in range
         return coordinates[0] > 0 && coordinates[0] <= 3 && coordinates[1] > 0 && coordinates[1] <= 3;
     }
@@ -219,12 +228,15 @@ public class Main extends Thread {
         return coordinates;
     }
 
-
     //simple methods to handle the console
     public static void clearConsole() {
         try {
             System.out.print("\033[H\033[2J");
             System.out.flush();
+            System.out.println("Tic Tac Toe 3D");
+            System.out.println("--------------");
+            System.out.println("Spieler " + currentPlayer.getName() + " ist am Zug!");
+            System.out.println("");
         } catch (Exception e) {
             // Handle any exceptions.
         }

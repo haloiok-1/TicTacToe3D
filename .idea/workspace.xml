@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e6d4d7b8-a43d-4d23-9534-fbb64e39206a" name="Changes" comment="">
+    <list default="true" id="e6d4d7b8-a43d-4d23-9534-fbb64e39206a" name="Changes" comment="updated a function to generalize coordinate input">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Pane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Pane.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -231,7 +232,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684264748311</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="updated a function to generalize coordinate input">
+      <created>1685599701787</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1685599701787</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -267,7 +275,8 @@
     <MESSAGE value="fixed static variable to &quot;normal&quot;" />
     <MESSAGE value="some minor changes" />
     <MESSAGE value="added a function to print the whole Field" />
-    <option name="LAST_COMMIT_MESSAGE" value="added a function to print the whole Field" />
+    <MESSAGE value="updated a function to generalize coordinate input" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated a function to generalize coordinate input" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
