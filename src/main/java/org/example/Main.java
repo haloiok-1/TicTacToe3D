@@ -156,8 +156,8 @@ public class Main extends Thread {
         //get the pane input and the square input for the coordinates array
         coordinates[0] = getPaneInput();
         int[] squareInputArray = getSquareInput();
-        coordinates[1] = squareInputArray[0];
-        coordinates[2] = squareInputArray[1];
+        coordinates[1] = squareInputArray[1];
+        coordinates[2] = squareInputArray[0];
 
         return coordinates;
     }
