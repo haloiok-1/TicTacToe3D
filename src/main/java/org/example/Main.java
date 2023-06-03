@@ -6,6 +6,8 @@ public class Main extends Thread {
     static Player player1;
     static Player player2;
 
+    Player[] players = {player1, player2};
+
     static Player currentPlayer = null;
     static Pane currentPane = null;
 
@@ -23,28 +25,54 @@ public class Main extends Thread {
 
     public static void main(String[] args) {
         Main main = new Main();
-        int counter = 10;
+        boolean endGame = false;
+
+        fillField();
+
 
         startGame();
+        currentPlayer = player1;
 
-        while (counter > 0) {
+        while (!endGame) {
             System.out.println("next round");
-            currentPlayer = player1;
+            // switch the current player
+            switchPlayer();
 
+            // let the player choose a pane and a position and set the symbol
             currentCoordinates = getCompleteCoordinates();
             currentPane = field.getPane(currentCoordinates[0]);
             currentPane.setSymbolAtPosition(currentCoordinates[1], currentCoordinates[2], currentPlayer);
 
-            currentPlayer = player2;
+            //check for win
+            Player winner = field.checkWin();
+            //check for draw
+            boolean draw = field.checkDraw();
 
-            currentCoordinates = getCompleteCoordinates();
-            currentPane = field.getPane(currentCoordinates[0]);
-            currentPane.setSymbolAtPosition(currentCoordinates[1], currentCoordinates[2], currentPlayer);
+            //if there is a winner or a draw, end the game
+            if (winner != null || draw) {
+                endGame = true;
+            }
+        }
 
-            counter--;
+        //print the winner
+        if (field.checkWin3D() != null) {
+            System.out.println(field.checkWin3D().name + " won the game!");
+        } else {
+            System.out.println("Draw!");
         }
 
 
+    }
+
+    public static boolean checkWin() {
+
+        //check for win
+        Player winner = field.checkWin3D();
+        //check for draw
+        boolean draw = field.checkDraw();
+
+        //if there is a winner or a draw, end the game
+        return winner != null || draw;
     }
 
     public static void startGame() {
@@ -86,6 +114,15 @@ public class Main extends Thread {
         //TODO implement the game logic
         //nothing to do here yet
 
+    }
+
+    //switch between players as current player
+    public static void switchPlayer() {
+        if (currentPlayer == player1) {
+            currentPlayer = player2;
+        } else {
+            currentPlayer = player1;
+        }
     }
 
     public static int getPaneInput() {
@@ -248,9 +285,8 @@ public class Main extends Thread {
         try
         {
             System.in.read();
+        } catch (Exception ignored) {
         }
-        catch(Exception ignored)
-        {}
 
         //clear console if clearConsole is true
         if (clearConsole) {
@@ -258,4 +294,18 @@ public class Main extends Thread {
         }
     }
 
+
+    //test function to fill the field with characters to test the win condition
+    public static void fillField() {
+        field.getPane(1).setSymbolAtPosition(1, 1, player1);
+        field.getPane(1).setSymbolAtPosition(1, 2, player1);
+        field.getPane(1).setSymbolAtPosition(1, 3, player1);
+
+        field.getPane(1).printPane();
+
+        System.out.println("Check win is: " + checkWin());
+
+        pressEnterToContinue(true);
+
+    }
 }
