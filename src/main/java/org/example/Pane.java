@@ -3,9 +3,11 @@ package org.example;
 
 public class Pane {
 
+    // Eigenschaften
     public char[][] pane = new char[3][3];
     int id;
 
+    //constructor
     public Pane(int id) {
         this.id = id;
 
@@ -62,37 +64,51 @@ public class Pane {
     }
 
     //check for win in Tic Tac Toe field
-    public Player checkForWin() {
+    public Player checkWin2D() {
         //check for win in rows
         for (int i = 0; i < 3; i++) {
             if (pane[i][0] == pane[i][1] && pane[i][1] == pane[i][2] && pane[i][0] != ' ') {
                 if (pane[i][0] == Main.player1.symbol) return Main.player1;
                 else return Main.player2;
             }
-
-            //check for wins in columns
-            for (int j = 0; j < 3; j++) {
-                if (pane[0][j] == pane[1][j] && pane[1][j] == pane[2][j] && pane[0][j] != ' ') {
-                    if (pane[0][j] == Main.player1.symbol) return Main.player1;
-                    else return Main.player2;
-                }
-            }
-
-            // check for wins in diagonal
-            if (pane[0][0] == pane[1][1] && pane[1][1] == pane[2][2] && pane[0][0] != ' ') {
-                if (pane[0][0] == Main.player1.symbol) return Main.player1;
-                else return Main.player2;
-
-                if (pane[0][2] == pane[1][1] && pane[1][1] == pane[2][0] && pane[0][2] != ' ') {
-                    if (pane[0][2] == Main.player1.symbol) return Main.player1;
-                    else return Main.player2;
-                }
-
-
-            }
-
-
         }
+
+        //check for wins in columns
+        for (int i = 0; i < 3; i++) {
+            if (pane[0][i] == pane[1][i] && pane[1][i] == pane[2][i] && pane[0][i] != ' ') {
+                if (pane[0][i] == Main.player1.symbol) return Main.player1;
+                else return Main.player2;
+            }
+        }
+
+        // check for wins in diagonal
+        if (pane[0][0] == pane[1][1] && pane[1][1] == pane[2][2] && pane[0][0] != ' ') {
+            if (pane[0][0] == Main.player1.symbol) return Main.player1;
+            else return Main.player2;
+        }
+
+        if (pane[0][2] == pane[1][1] && pane[1][1] == pane[2][0] && pane[0][2] != ' ') {
+            if (pane[0][2] == Main.player1.symbol) return Main.player1;
+            else return Main.player2;
+        }
+
         return null;
     }
 
+
+    public boolean checkDraw() {
+        //check if there is a draw
+        boolean draw = true;
+        for (char[] chars : pane) {
+            for (int j = 0; j < pane[0].length; j++) {
+                if (chars[j] == ' ') {
+                    draw = false;
+                    break;
+                }
+            }
+        }
+        return draw;
+
+    }
+
+}
