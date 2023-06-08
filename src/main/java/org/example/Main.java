@@ -6,7 +6,6 @@ public class Main extends Thread {
     static Player player1;
     static Player player2;
 
-    Player[] players = {player1, player2};
 
     static Player currentPlayer = null;
     static Pane currentPane = null;
@@ -27,6 +26,8 @@ public class Main extends Thread {
         Main main = new Main();
         boolean endGame = false;
         currentPlayer = player1;
+
+        startGame();
 
         while (!endGame) {
             System.out.println("next round");
@@ -72,6 +73,7 @@ public class Main extends Thread {
     }
 
     public static void startGame() {
+        //TODO update this explanation
         clearConsole();
 
         //print welcome message
@@ -142,7 +144,6 @@ public class Main extends Thread {
                 System.out.println("Please enter a valid number between 1 and 3!");
                 pressEnterToContinue(false);
                 scanner.next();
-                continue;
             }
         }
 
@@ -269,7 +270,7 @@ public class Main extends Thread {
             System.out.println("Tic Tac Toe 3D");
             System.out.println("--------------");
             System.out.println("Spieler " + currentPlayer.getName() + " ist am Zug!");
-            System.out.println("");
+            System.out.println();
         } catch (Exception e) {
             // Handle any exceptions.
         }
