@@ -87,6 +87,7 @@ public class Pane {
             else return Main.player2;
         }
 
+        // check for wins in diagonal
         if (pane[0][2] == pane[1][1] && pane[1][1] == pane[2][0] && pane[0][2] != ' ') {
             if (pane[0][2] == Main.player1.symbol) return Main.player1;
             else return Main.player2;
