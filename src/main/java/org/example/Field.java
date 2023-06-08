@@ -47,6 +47,9 @@ public class Field {
         //check win in each pane
         for (int i = 0; i < 3; i++) {
             winningPlayer = panes[i].checkWin2D();
+            if (winningPlayer != null) {
+                return winningPlayer;
+            }
         }
 
         //check win in 3D (3 panes)
@@ -95,7 +98,7 @@ public class Field {
         }
 
         // check diagonal in 3D (3 panes) corner to corner
-        //front bottom left to back top right corner
+        // front bottom left to back top right corner
         if (panes[0].pane[0][0] == panes[1].pane[1][1] && panes[1].pane[1][1] == panes[2].pane[2][2] && panes[0].pane[0][0] != ' ') {
             if (panes[0].pane[0][0] == Main.player1.symbol) {
                 winningPlayer = Main.player1;
