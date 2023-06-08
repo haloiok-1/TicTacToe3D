@@ -26,11 +26,6 @@ public class Main extends Thread {
     public static void main(String[] args) {
         Main main = new Main();
         boolean endGame = false;
-
-        fillField();
-
-
-        startGame();
         currentPlayer = player1;
 
         while (!endGame) {
@@ -55,6 +50,7 @@ public class Main extends Thread {
         }
 
         //print the winner
+        clearConsole();
         if (field.checkWin3D() != null) {
             System.out.println(field.checkWin3D().name + " won the game!");
         } else {
