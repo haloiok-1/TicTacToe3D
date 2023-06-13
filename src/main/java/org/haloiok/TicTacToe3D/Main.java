@@ -14,6 +14,8 @@ public class Main extends Thread {
 
     static Scanner scanner = new Scanner(System.in);
 
+    static String gameName = "Tic Tac Toe 3D";
+
     public Main() {
         super();
         field = new Field();
@@ -24,10 +26,9 @@ public class Main extends Thread {
 
     public static void main(String[] args) {
         Main main = new Main();
+        main.setGameName("Goofy ass Game");
         boolean endGame = false;
-        currentPlayer = player1;
-
-        startGame();
+        currentPlayer = player2;
 
         while (!endGame) {
             System.out.println("next round");
@@ -70,42 +71,6 @@ public class Main extends Thread {
 
         //if there is a winner or a draw, end the game
         return winner != null || draw;
-    }
-
-    public static void startGame() {
-        //TODO update this explanation
-        clearConsole();
-
-        //print welcome message
-        System.out.println("Welcome to Tic Tac Toe!");
-        System.out.println("Player 1 is X, Player 2 is O");
-        System.out.println("Player 1 starts!");
-
-        pressEnterToContinue(false);
-
-        //describe the field with 3 dimensions
-        System.out.println("The field is divided into 3 panes, each pane is divided into 9 squares.");
-        System.out.println("A pane looks like this:");
-        System.out.println("1 | 2 | 3");
-        System.out.println("4 | 5 | 6");
-        System.out.println("7 | 8 | 9");
-
-        pressEnterToContinue(false);
-
-        //describe the input method
-        System.out.println("At first you will be asked to enter the number of the pane you want to place your symbol in.");
-        System.out.println("To place your symbol in the top pane, enter 1");
-        System.out.println("After this the game will show you the pane you chose and ask you to enter the number of the field you want to place your symbol in.");
-        System.out.println("To place your symbol on a field, enter the number of the field");
-        System.out.println("For example, to place your symbol on the top right field, enter 3");
-        System.out.println("To place your symbol on the middle left field, enter 4");
-
-        //
-        System.out.println();
-        System.out.println("For questions, suggestions or bug reports: Czylonio#0529 on Discord");
-        System.out.println("Good luck!");
-
-        pressEnterToContinue(true);
     }
 
     public void run() {
@@ -267,7 +232,7 @@ public class Main extends Thread {
         try {
             System.out.print("\033[H\033[2J");
             System.out.flush();
-            System.out.println("Tic Tac Toe 3D");
+            System.out.println(gameName);
             System.out.println("--------------");
             System.out.println("Spieler " + currentPlayer.getName() + " ist am Zug!");
             System.out.println();
@@ -304,5 +269,10 @@ public class Main extends Thread {
 
         pressEnterToContinue(true);
 
+    }
+
+    // getter setter
+    public void setGameName(String gameName) {
+        this.gameName = gameName;
     }
 }
