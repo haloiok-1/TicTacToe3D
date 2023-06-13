@@ -1,4 +1,4 @@
-package org.example;
+package org.haloiok.TicTacToe3D;
 import java.util.Scanner;
 
 public class Main extends Thread {
@@ -239,7 +239,7 @@ public class Main extends Thread {
             pressEnterToContinue(false);
         }
         //check if the square is already taken by an character
-        if (currentPane.getSymbolAtPosition(coordinates[0], coordinates[1]) != ' ') {
+        if (currentPane.getSymbolAtPosition(coordinates[1], coordinates[0]) != ' ') {
             System.out.println("This square is already taken!");
             pressEnterToContinue(false);
         }
