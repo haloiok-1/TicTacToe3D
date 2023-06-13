@@ -23,7 +23,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>org.example.Main</mainClass>
+                            <mainClass>org.haloiok.TicTacToe3D.Main</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
